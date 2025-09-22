@@ -1,4 +1,4 @@
 # robots.txt for BeyondCloudOps
 User-agent: *
 Disallow:
-Sitemap: https://www.BeyondCLoudOps.de/sitemap.xml
+Sitemap: https://www.beyondcloudops.de/sitemap.xml
