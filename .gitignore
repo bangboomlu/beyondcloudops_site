@@ -1,0 +1,33 @@
+# macOS system files
+.DS_Store
+
+# VS Code workspace settings
+.vscode/
+*.code-workspace
+
+# Node.js artifacts (if you ever add tooling)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build output (if you add a build step)
+dist/
+build/
+
+# Temporary files
+*.swp
+*.tmp
+*.bak
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+
+# SASS/SCSS cache
+.sass-cache/
+
+# Logs
+*.log
+
+# Ignore instructions and temp files
+/var/folders/
