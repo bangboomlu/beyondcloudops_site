@@ -42,6 +42,8 @@
     .nav {
       display: flex; align-items: center; gap: 1rem;
       max-width: 1100px; margin: 0 auto; padding: .75rem 1rem;
+      /* positioned parent so toggles can be absolutely placed consistently */
+      position: relative;
     }
     .brand { font-weight: 800; letter-spacing: .2px; text-decoration: none; color: var(--text); font-size: 1.15rem; }
     .brand span { color: var(--accent); }
@@ -72,7 +74,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 600px;
+      /* match external stylesheet to avoid layout shift on CSS load */
+      min-height: 480px;
       margin-bottom: 4.5rem;
       overflow: visible;
     }
