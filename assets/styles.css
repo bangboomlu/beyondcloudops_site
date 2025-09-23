@@ -133,6 +133,8 @@ main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 3rem; }
   object-fit: cover;
   opacity: 0.85;
   pointer-events: none;
+  /* Reserve intrinsic aspect ratio (SVG viewBox 800x600 => 4/3) to avoid layout shifts */
+  aspect-ratio: 4 / 3;
 }
 .hero-copy {
   position: relative;
@@ -243,8 +245,34 @@ input:focus, textarea:focus {
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
-  .menu { display: none; margin-left: 0; }
+  /* Keep the menu positioned so toggling it won't affect document flow.
+     Use opacity/visibility/transform to show/hide instead of display to avoid forced reflows. */
+  .menu {
+    display: grid;
+    margin-left: 0;
+    grid-auto-rows: min-content;
+    gap: .25rem;
+    position: absolute;
+    top: 3.25rem;
+    right: 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: .8rem;
+    padding: .5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+    pointer-events: none;
+    will-change: opacity, transform;
+  }
   .nav-toggle { display: inline-flex; border: 1px solid var(--border); background: var(--card); padding: .5rem .75rem; border-radius: .6rem; }
-  .theme-toggle { order: 3; }
-  .menu.open { display: grid; grid-auto-rows: min-content; gap: .25rem; position: absolute; top: 3.25rem; right: 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: .8rem; padding: .5rem; }
+  /* Prevent theme-toggle's auto margin from causing layout shifts on small screens */
+  .theme-toggle { order: 3; margin-left: 0; }
+  .menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 }
