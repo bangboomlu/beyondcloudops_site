@@ -292,4 +292,12 @@ input:focus, textarea:focus {
     transform: translateY(0);
     pointer-events: auto;
   }
+
+  /* Give the hero copy breathing room on small screens so headings don't touch the edge */
+  .hero-copy {
+    margin: 0 1rem;
+    padding: 1.5rem 1rem; /* reduce padding so it fits comfortably */
+    max-width: calc(100% - 2rem);
+    box-sizing: border-box;
+  }
 }
