@@ -1,15 +1,16 @@
 {
-  "name": "NovaSite",
-  "short_name": "NovaSite",
+  "name": "BeyondCloudOps",
+  "short_name": "BeyondCloudOps",
   "start_url": "/index.html",
   "display": "standalone",
   "icons": [
     {
-      "src": "/assets/favicon.svg",
-      "sizes": "64x64",
-      "type": "image/svg+xml"
+      "src": "/assets/images/logo-light-theme.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#0b0b0c",
-  "background_color": "#ffffff"
+  "theme_color": "#19231e",
+  "background_color": "#f2f4ed"
 }
