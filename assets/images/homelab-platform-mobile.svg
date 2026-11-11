@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1060" viewBox="0 0 390 1060" role="img" aria-labelledby="title description">
+  <title id="title">Homelab-Architektur fuer mobile Ansicht</title>
+  <desc id="description">Vertikale Uebersicht von Netzwerk, Proxmox, Kubernetes, separatem Monitoring und lokaler KI im Ausbau.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10Z" fill="#718078" />
+    </marker>
+    <style>
+      text { font-family: "Trebuchet MS", Arial, sans-serif; fill: #19231e; }
+      .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .5px; }
+      .heading { font-size: 19px; font-weight: 700; }
+      .body { font-size: 15px; fill: #4c5a51; }
+      .small { font-size: 12px; fill: #59665e; }
+      .white { fill: #ffffff; }
+      .muted-white { fill: #d6ded7; }
+      .lime { fill: #d7ed68; }
+    </style>
+  </defs>
+  <rect width="390" height="1060" fill="#f2f4ed" />
+  <text x="20" y="34" class="eyebrow" fill="#315dc8">ARCHITEKTUR / VEREINFACHT</text>
+  <text x="20" y="70" class="heading">Vom Heimnetz bis zum Dienst</text>
+
+  <rect x="20" y="100" width="350" height="112" rx="6" fill="#ffffff" stroke="#d5dbd2" stroke-width="2" />
+  <rect x="20" y="100" width="6" height="112" rx="3" fill="#9ab5ff" />
+  <text x="40" y="127" class="eyebrow" fill="#315dc8">01 / NETZWERK &amp; ZUGANG</text>
+  <text x="40" y="158" class="heading">MikroTik RB5009</text>
+  <text x="40" y="188" class="body">VLANs · WireGuard · UniFi WLAN</text>
+
+  <line x1="195" y1="212" x2="195" y2="242" stroke="#718078" stroke-width="2" marker-end="url(#arrow)" />
+
+  <rect x="20" y="254" width="350" height="116" rx="6" fill="#ffffff" stroke="#bfc9bf" stroke-width="2" />
+  <rect x="20" y="254" width="6" height="116" rx="3" fill="#d7ed68" />
+  <text x="40" y="281" class="eyebrow" fill="#687d24">02 / VIRTUALISIERUNG</text>
+  <text x="40" y="312" class="heading">Proxmox VE</text>
+  <text x="40" y="342" class="body">2 ThinkCentre-Hosts · VMs · LXC</text>
+
+  <line x1="195" y1="370" x2="195" y2="400" stroke="#718078" stroke-width="2" marker-end="url(#arrow)" />
+
+  <rect x="20" y="412" width="350" height="228" rx="6" fill="#19231e" />
+  <text x="40" y="441" class="eyebrow lime">KUBERNETES / VMs</text>
+  <text x="40" y="475" class="heading white">kubeadm-Cluster</text>
+  <text x="40" y="506" class="body muted-white">Argo CD · Helm · GitOps</text>
+  <line x1="40" y1="524" x2="350" y2="524" stroke="#405047" stroke-width="1" />
+  <text x="40" y="556" class="body white">MetalLB · Istio</text>
+  <text x="40" y="585" class="body white">cert-manager</text>
+  <text x="40" y="617" class="small muted-white">Anwendungen aus Git verwaltet</text>
+
+  <rect x="20" y="658" width="350" height="150" rx="6" fill="#e5ebfa" stroke="#9ab5ff" stroke-width="2" />
+  <text x="40" y="688" class="eyebrow" fill="#315dc8">SEPARATER UBUNTU-LXC</text>
+  <text x="40" y="721" class="heading">Prometheus + Grafana</text>
+  <text x="40" y="752" class="body">Monitoring außerhalb des Clusters</text>
+  <text x="40" y="782" class="small">Cluster-Metriken zentral sichtbar</text>
+
+  <rect x="20" y="826" width="350" height="188" rx="6" fill="#1b2923" />
+  <rect x="20" y="826" width="6" height="188" rx="3" fill="#e2a584" />
+  <text x="40" y="856" class="eyebrow lime">03 / LOKALE KI · IM AUSBAU</text>
+  <text x="40" y="889" class="heading white">Eigenes Experimentierfeld</text>
+  <text x="40" y="920" class="body muted-white">Open WebUI · Ollama</text>
+  <text x="40" y="949" class="body muted-white">LM Studio · SearXNG</text>
+  <text x="40" y="984" class="small muted-white">GPU-Inferenz via Vulkan wird erprobt</text>
+
+  <text x="20" y="1042" class="small">Netzwerkdetails und Zugriffsregeln weggelassen.</text>
+</svg>

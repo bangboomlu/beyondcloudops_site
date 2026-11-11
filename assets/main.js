@@ -50,4 +50,25 @@
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
+
+  const networkVisual = document.querySelector('.network-visual');
+  const networkDetail = document.getElementById('network-detail');
+  const networkDetails = {
+    wlan: 'Access Points verbinden deine Geräte; Roaming und Gäste-WLAN richten sich nach Wohnung und Hardware.',
+    'smart-home': 'Home Assistant bündelt Integrationen; Sensoren und Automationen werden passend zum Setup eingebunden.',
+    homelab: 'NAS und Proxmox profitieren von stabiler Anbindung und einem durchdachten Backup-Weg.'
+  };
+
+  networkVisual?.querySelectorAll('.network-endpoint').forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.networkTarget;
+      if (!target || !networkDetail || !networkDetails[target]) return;
+
+      networkVisual.dataset.activeTarget = target;
+      networkVisual.querySelectorAll('.network-endpoint').forEach((endpoint) => {
+        endpoint.setAttribute('aria-pressed', String(endpoint === button));
+      });
+      networkDetail.textContent = networkDetails[target];
+    });
+  });
 })();

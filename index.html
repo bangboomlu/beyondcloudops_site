@@ -13,9 +13,9 @@
   <link rel="stylesheet" href="/assets/styles.css">
   <script defer src="/assets/main.js"></script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
-  <header class="site-header">
+  <header class="site-header site-header-immersive">
     <nav class="nav" aria-label="Hauptnavigation">
       <a class="brand" href="/index.html" aria-label="BeyondCloudOps Startseite">Beyond<span>CloudOps</span></a>
       <button id="themeToggle" class="theme-toggle" aria-label="Farbschema wechseln" title="Farbschema wechseln" aria-pressed="false"></button>
@@ -27,6 +27,7 @@
       <ul id="menu" class="menu">
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#ablauf">Ablauf</a></li>
+        <li><a href="/homelab.html">Homelab</a></li>
         <li><a href="/about.html">Über mich</a></li>
         <li><a class="menu-cta" href="mailto:hesse@beyondcloudops.de?subject=Mein%20Heimnetzwerk-Projekt">Projekt besprechen <span aria-hidden="true">↗</span></a></li>
       </ul>
@@ -53,33 +54,60 @@
         <figure class="network-visual" aria-labelledby="diagram-title">
           <figcaption class="diagram-heading">
             <span id="diagram-title">Ein Setup. Sauber verbunden.</span>
-            <span class="diagram-label">BEISPIEL-TOPOLOGIE / 01</span>
+            <span class="diagram-label">SCHEMATISCHE TOPOLOGIE / 01</span>
           </figcaption>
-          <div class="network-source">
-            <span class="signal-mark" aria-hidden="true"></span>
-            <span class="node-name">INTERNET</span>
-            <span class="node-detail">Glasfaser / Kabel</span>
-          </div>
-          <div class="diagram-stem" aria-hidden="true"></div>
-          <div class="network-core">
-            <div class="network-node">
-              <span class="node-index">01 / GATEWAY</span>
-              <strong>Firewall</strong>
-              <span class="node-detail">Regeln · VPN · VLANs</span>
+          <div class="network-scene" role="group" aria-label="Interaktive Beispieltopologie">
+            <div class="network-wires" aria-hidden="true">
+              <span class="network-wire network-wire-wlan"></span>
+              <span class="network-wire network-wire-smart"></span>
+              <span class="network-wire network-wire-lab"></span>
             </div>
-            <span class="route-line" aria-hidden="true"></span>
-            <div class="network-node network-node-accent">
-              <span class="node-index">02 / SWITCH</span>
-              <strong>Managed LAN</strong>
-              <span class="node-detail">PoE · 2.5 / 10 GbE</span>
+            <div class="network-uplink" aria-hidden="true">
+              <span class="signal-mark"></span>
+              <span>INTERNET / WAN</span>
+              <small>GLASFASER</small>
             </div>
+            <div class="network-core">
+              <span class="core-kicker">LOCAL NETWORK / CORE</span>
+              <div class="core-route">
+                <span class="core-node"><small>01 / EDGE</small><strong>Firewall</strong></span>
+                <span class="core-arrow" aria-hidden="true">↔</span>
+                <span class="core-node"><small>02 / LAN</small><strong>Managed LAN</strong></span>
+              </div>
+              <p>VPN · VLANs · PoE</p>
+            </div>
+            <button class="network-endpoint" type="button" data-network-target="wlan" aria-pressed="false" aria-controls="network-detail">
+              <span class="endpoint-head"><span class="endpoint-index">01 / ACCESS</span><span class="endpoint-dot" aria-hidden="true"></span></span>
+              <span class="endpoint-title">WLAN</span>
+              <span class="endpoint-visual endpoint-visual-wlan" aria-hidden="true">
+                <span class="wifi-glyph"><i></i><i></i><i></i><b></b></span>
+                <span class="visual-metric">2.4 / 5 GHz</span>
+                <span class="visual-status">SCHEMA</span>
+              </span>
+              <small>Mesh · Roaming</small>
+            </button>
+            <button class="network-endpoint" type="button" data-network-target="smart-home" aria-pressed="false" aria-controls="network-detail">
+              <span class="endpoint-head"><span class="endpoint-index">02 / AUTOMATION</span><span class="endpoint-dot" aria-hidden="true"></span></span>
+              <span class="endpoint-title">Smart Home</span>
+              <span class="endpoint-visual endpoint-visual-smart" aria-hidden="true">
+                <span class="smart-tile"><strong>21.5&deg;</strong><small>RAUM</small></span>
+                <span class="smart-tile"><strong>ON</strong><small>LICHT</small></span>
+                <span class="smart-tile smart-tile-signal"><i></i><i></i><i></i></span>
+              </span>
+              <small>Home Assistant</small>
+            </button>
+            <button class="network-endpoint" type="button" data-network-target="homelab" aria-pressed="false" aria-controls="network-detail">
+              <span class="endpoint-head"><span class="endpoint-index">03 / COMPUTE</span><span class="endpoint-dot" aria-hidden="true"></span></span>
+              <span class="endpoint-title">Homelab</span>
+              <span class="endpoint-visual endpoint-visual-lab" aria-hidden="true">
+                <span class="server-stack"><i></i><i></i><i></i></span>
+                <span class="visual-metric">NAS / PROXMOX</span>
+                <span class="visual-status">VM / LXC</span>
+              </span>
+              <small>Storage · Backup</small>
+            </button>
           </div>
-          <div class="branch-stem" aria-hidden="true"></div>
-          <div class="network-endpoints">
-            <div><span class="endpoint-dot" aria-hidden="true"></span><span>WLAN</span><small>Roaming</small></div>
-            <div><span class="endpoint-dot" aria-hidden="true"></span><span>Smart Home</span><small>Home Assistant</small></div>
-            <div><span class="endpoint-dot" aria-hidden="true"></span><span>Homelab</span><small>Proxmox · NAS</small></div>
-          </div>
+          <p class="network-detail" id="network-detail" role="status" aria-live="polite" aria-atomic="true">Wähle einen Bereich, um die typische Verbindung hervorzuheben.</p>
           <p class="diagram-foot">Deine Anforderungen. Eine klare Architektur.</p>
         </figure>
       </div>
@@ -106,7 +134,7 @@
         </article>
         <article class="service-item">
           <span class="service-number">03</span>
-          <div><h3>Homelab & Selbsthosting</h3><p>Proxmox, eigene Dienste und Backups: leistungsfähig aufgebaut und verständlich übergeben.</p></div>
+          <div><h3>Homelab & Selbsthosting</h3><p>Proxmox, eigene Dienste und Backups: leistungsfähig aufgebaut und verständlich übergeben.</p><a class="text-link service-project-link" href="/homelab.html">Mein Homelab <span aria-hidden="true">↗</span></a></div>
           <span class="service-arrow" aria-hidden="true">↗</span>
         </article>
       </div>
@@ -145,7 +173,7 @@
     <div class="footer-inner">
       <a class="brand" href="/index.html">Beyond<span>CloudOps</span></a>
       <p>© 2026 Lucas Hesse · Für ein Zuhause, das einfach läuft.</p>
-      <div class="footer-links"><a href="/privacy.html">Datenschutz</a><a href="/impressum.html">Impressum</a></div>
+      <div class="footer-links"><a href="/privacy.html">Datenschutz</a><a href="/sitemap.xml">Sitemap</a><a href="/impressum.html">Impressum</a></div>
     </div>
   </footer>
 </body>

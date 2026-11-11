@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mein Homelab: Kubernetes & Selbsthosting | BeyondCloudOps</title>
+  <meta name="description" content="Ein privates Homelab mit Proxmox, Kubernetes, GitOps, segmentiertem Netzwerk und selbst gehosteten Diensten." />
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <link rel="canonical" href="https://www.beyondcloudops.de/homelab.html">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/assets/images/favicon_dark.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/assets/images/favicon_light.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script defer src="/assets/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a class="brand" href="/index.html" aria-label="Startseite">Beyond<span>CloudOps</span></a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Farbschema wechseln" title="Farbschema wechseln"></button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" title="Menü öffnen" aria-label="Menü öffnen">
+        <span class="nav-toggle-dot"></span>
+        <span class="nav-toggle-dot"></span>
+        <span class="nav-toggle-dot"></span>
+      </button>
+      <ul id="menu" class="menu">
+        <li><a href="/index.html#leistungen">Leistungen</a></li>
+        <li><a href="/index.html#ablauf">Ablauf</a></li>
+        <li><a href="/homelab.html" aria-current="page">Homelab</a></li>
+        <li><a href="/about.html">Über mich</a></li>
+        <li><a class="menu-cta" href="mailto:hesse@beyondcloudops.de?subject=Mein%20Heimnetzwerk-Projekt">Projekt besprechen <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" class="project-main" tabindex="-1">
+    <section class="project-intro" aria-labelledby="project-title">
+      <div class="project-container">
+        <p class="eyebrow">PRIVATES PROJEKT / LAUFENDES HOMELAB</p>
+        <div class="project-intro-grid">
+          <h1 id="project-title">Mein Homelab.<br><em>Vom Netz bis zur Plattform.</em></h1>
+          <div>
+            <p class="project-lede">Eine selbst gehostete Infrastruktur, in der ich Heimnetz, Virtualisierung, Kubernetes und lokale Dienste zusammendenke.</p>
+            <p class="project-note">Ein persönliches Betriebs- und Lernprojekt, keine Kundenreferenz oder Blaupause für jedes Zuhause.</p>
+          </div>
+        </div>
+        <ul class="project-stack" aria-label="Schwerpunkte des Projekts">
+          <li>Proxmox VE</li>
+          <li>Kubernetes</li>
+          <li>GitOps</li>
+          <li>Netzwerksegmentierung</li>
+          <li>Lokale KI im Ausbau</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project-architecture" aria-labelledby="architecture-title">
+      <div class="project-container">
+        <div class="project-section-heading">
+          <div>
+            <p class="eyebrow">ARCHITEKTUR / VEREINFACHT</p>
+            <h2 id="architecture-title">Vom Heimnetz bis zum Dienst.</h2>
+          </div>
+          <p>Virtualisierung trägt den Kubernetes-Cluster und separate Infrastruktur-Dienste. Lokale KI ist ein eigenes Experimentierfeld.</p>
+        </div>
+        <figure class="project-diagram-frame">
+          <picture>
+            <source media="(max-width: 600px)" srcset="/assets/images/homelab-platform-mobile.svg">
+            <img src="/assets/images/homelab-platform.svg" alt="Vereinfachte Architektur: segmentiertes Heimnetz, Proxmox VE, Kubernetes mit GitOps, unabhängiges Monitoring und lokale KI im Ausbau." width="960" height="1180">
+          </picture>
+          <figcaption>Die Übersicht zeigt Systemgrenzen, nicht IP-Adressen, VLAN-IDs oder konkrete Firewall-Regeln.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-decisions" aria-labelledby="decisions-title">
+      <div class="project-container">
+        <div class="project-section-heading">
+          <div>
+            <p class="eyebrow">TECHNISCHE ENTSCHEIDUNGEN</p>
+            <h2 id="decisions-title">Drei Prinzipien im Betrieb.</h2>
+          </div>
+          <p>Die Architektur soll nicht möglichst kompliziert sein. Sie soll sich erklären, beobachten und schrittweise verändern lassen.</p>
+        </div>
+        <div class="project-decision-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Zugriffe gezielt begrenzen</h3>
+              <p>VLANs trennen Infrastruktur, Workloads, private Geräte und IoT. Zwischen Segmenten sind nur benötigte Verbindungen vorgesehen.</p>
+            </div>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Monitoring außerhalb des Clusters</h3>
+              <p>Prometheus und Grafana laufen in einem separaten Ubuntu-LXC. So hängt die Sicht auf den Cluster nicht allein von ihm selbst ab.</p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Änderungen nachvollziehbar halten</h3>
+              <p>Argo CD gleicht den Kubernetes-Zustand mit Git ab; Helm bündelt die Konfiguration der Anwendungen.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-status" aria-labelledby="status-title">
+      <div class="project-container">
+        <div class="project-section-heading">
+          <div>
+            <p class="eyebrow">STATUS</p>
+            <h2 id="status-title">Betrieb, Ausbau, nächste Schritte.</h2>
+          </div>
+          <p>Das Lab entwickelt sich weiter. Aktuelle Systeme und Experimente sind deshalb getrennt von geplanten Arbeiten aufgeführt.</p>
+        </div>
+        <div class="project-status-grid">
+          <article class="project-status-active">
+            <p class="project-status-label">IM BETRIEB</p>
+            <h3>Plattform & Monitoring</h3>
+            <ul>
+              <li>Proxmox VE und Kubernetes mit kubeadm</li>
+              <li>Argo CD, Helm, MetalLB, Istio und cert-manager</li>
+              <li>Prometheus und Grafana außerhalb des Clusters</li>
+            </ul>
+          </article>
+          <article class="project-status-exploring">
+            <p class="project-status-label">IM AUSBAU</p>
+            <h3>Lokale KI</h3>
+            <ul>
+              <li>Open WebUI, Ollama, LM Studio und SearXNG</li>
+              <li>GPU-Inferenz mit Vulkan und eigene Pipelines werden erprobt</li>
+              <li>Modelle, Suche und Workflows bleiben ein separates Experimentierfeld</li>
+            </ul>
+          </article>
+          <article class="project-status-planned">
+            <p class="project-status-label">ALS NÄCHSTES</p>
+            <h3>Mehr Betriebssicherheit</h3>
+            <ul>
+              <li>Zentrales Logging und mehr Automatisierung</li>
+              <li>Ausfallsicherheit und Hochverfügbarkeit weiterentwickeln</li>
+              <li>Hochverfügbarkeit ist ein Ziel, kein aktuelles Versprechen</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-takeaway" aria-labelledby="takeaway-title">
+      <div class="project-container">
+        <p class="eyebrow">WAS ICH DARAUS MITNEHME</p>
+        <div class="project-takeaway-grid">
+          <h2 id="takeaway-title">Technik muss zum Zuhause passen.</h2>
+          <p>Das Lab ist mein Raum zum Erproben. Bei Heimnetz- und Homelab-Projekten beginne ich trotzdem mit dem vorhandenen Setup und dem eigentlichen Bedarf: sinnvoll trennen, sicher verbinden und verständlich übergeben, ohne Kubernetes zum Selbstzweck zu machen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-band project-contact" aria-labelledby="project-contact-title">
+      <div class="section-wrap contact-inner">
+        <div>
+          <p class="eyebrow">DEIN SETUP, DEINE ZIELE</p>
+          <h2 id="project-contact-title">Was soll bei dir<br>zuverlässiger laufen?</h2>
+        </div>
+        <a class="button button-dark" href="mailto:hesse@beyondcloudops.de?subject=Mein%20Heimnetzwerk-Projekt">Projekt besprechen <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand" href="/index.html">Beyond<span>CloudOps</span></a>
+      <p>© 2026 Lucas Hesse · Für ein Zuhause, das einfach läuft.</p>
+      <div class="footer-links"><a href="/privacy.html">Datenschutz</a><a href="/sitemap.xml">Sitemap</a><a href="/impressum.html">Impressum</a></div>
+    </div>
+  </footer>
+</body>
+</html>
